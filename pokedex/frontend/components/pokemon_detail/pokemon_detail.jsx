@@ -1,4 +1,6 @@
 import React from 'react';
+import ItemDetailContainer from '../item/item_detail_container';
+import { Route, Link } from 'react-router-dom';
 
 class PokemonDetail extends React.Component {
   constructor(props){
@@ -17,8 +19,7 @@ class PokemonDetail extends React.Component {
   }
 
   render(){
-    const { name, attack, defense, image_url, moves, poke_type, items } = this.props.pokemonDetail;
-    console.log(items);
+    const { id, name, attack, defense, image_url, moves, poke_type, items } = this.props.pokemonDetail;
 
     return(
       <section>
@@ -31,8 +32,11 @@ class PokemonDetail extends React.Component {
         <h4>Items: </h4>
         <ul>{items.map((item, idx) => (
             <li key={idx}>
-              <img src={item.image_url} height='50' width='50'></img>
+              <Link to={`/pokemon/${id}/item/${item.id}`}>
+                <img src={item.image_url} height='50' width='50'></img>
+              </Link>
             </li>))}
+            <Route path="/pokemon/:pokemonId/item/:itemId" component={ ItemDetailContainer }/>
         </ul>
       </section>
 

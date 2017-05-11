@@ -4,14 +4,11 @@ export const selectAllPokemon = state => (
   values(state.pokemon)
 );
 
-export const selectPokemon = pokemonDetail => {
-  return Object.keys(pokemonDetail).map(key => {
-    if (key !== 'items'){
-      return `${key}: ${pokemonDetail[key]}`;
-    } else {
-      return pokemonDetail[key].map( item => {
-        return item.name;
-      });
+export const selectPokemonItem = (state, itemId) => {
+  for(let idx in state.pokemonDetail.items){
+    if (state.pokemonDetail.items[idx].id === parseInt(itemId)){
+      return state.pokemonDetail.items[idx];
     }
-  });
+  }
+
 };
