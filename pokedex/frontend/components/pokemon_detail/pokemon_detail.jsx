@@ -36,8 +36,8 @@ class PokemonDetail extends React.Component {
                 <img src={item.image_url} height='50' width='50'></img>
               </Link>
             </li>))}
-            <Route path="/pokemon/:pokemonId/item/:itemId" component={ ItemDetailContainer }/>
         </ul>
+        <Route path="/pokemon/:pokemonId/item/:itemId" component={ ItemDetailContainer }/>
       </section>
 
       //

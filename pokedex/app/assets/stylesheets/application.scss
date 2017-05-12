@@ -27,6 +27,35 @@ body {
   height: 100%;
 }
 
+section {
+  display: flex;
+  align-content: center;
+}
+
+section section{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  height: 10%;
+  width: auto;
+}
+
+li {
+  list-style: none;
+}
+
+section section ul{
+  display: flex;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+}
+
 header {
   display: flex;
   justify-content: center;
