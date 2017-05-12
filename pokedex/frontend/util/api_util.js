@@ -18,6 +18,9 @@ export const createPokemon = pokemon => (
     url: '/api/pokemon',
     data: {
       pokemon
+    },
+    error: error => {
+      return error.responseJSON;
     }
   })
 );

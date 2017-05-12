@@ -6,6 +6,7 @@ export const REQUEST_POKEMON = 'REQUEST_POKEMON';
 export const RECEIVE_POKEMON = 'RECEIVE_POKEMON';
 export const CREATE_POKEMON = 'CREATE_POKEMON';
 export const RECEIVE_NEW_POKEMON = "RECEIVE_NEW_POKEMON";
+export const RECEIVE_POKEMON_ERRORS = 'RECEIVE_POKEMON_ERRORS';
 
 export const receiveAllPokemon = pokemon => ({
   type: RECEIVE_ALL_POKEMON,
@@ -34,5 +35,13 @@ export const receiveNewPokemon = pokemon => ({
 
 export const createPokemon = pokemon => dispatch => (
   APIUtil.createPokemon(pokemon)
-    .then(createdPokemon => dispatch(receiveNewPokemon(createdPokemon)))
+    .then(createdPokemon => {
+      dispatch(receiveNewPokemon(createdPokemon));
+      return createdPokemon;
+    }, error => dispatch(receivePokemonErrors(error)))
 );
+
+export const receivePokemonErrors = error => ({
+  type:RECEIVE_POKEMON_ERRORS,
+  error
+});
